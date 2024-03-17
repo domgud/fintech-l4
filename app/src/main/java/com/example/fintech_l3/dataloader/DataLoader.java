@@ -3,6 +3,7 @@ package com.example.fintech_l3.dataloader;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.fintech_l3.common.Constants;
 import com.example.fintech_l3.json.JsonParser;
 
 import java.io.BufferedReader;
@@ -13,10 +14,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
+/**
+ * Class responsible for getting the data from the API
+ * @param <T> DTO type
+ */
 public class DataLoader<T> {
     private static final String TAG = "DataLoader";
-    private static final String API_URL = "https://www.floatrates.com/daily/usd.json";
-
     private final DataLoaderListener<T> listener;
 
     private final JsonParser<T> jsonParser;
@@ -34,7 +37,7 @@ public class DataLoader<T> {
         @Override
         protected List<T> doInBackground(Void... voids) {
             try {
-                URL url = new URL(API_URL);
+                URL url = new URL(Constants.API_URL);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 String jsonString = readJsonStringFromStream(urlConnection.getInputStream());
                 return jsonParser.parseStringAsList(jsonString);
@@ -63,10 +66,5 @@ public class DataLoader<T> {
         }
         reader.close();
         return stringBuilder.toString();
-    }
-
-    public interface DataLoaderListener<T> {
-        void onDataLoaded(List<T> currencies);
-        void onDataLoadFailed();
     }
 }

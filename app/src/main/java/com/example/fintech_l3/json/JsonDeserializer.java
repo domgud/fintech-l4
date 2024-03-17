@@ -10,6 +10,10 @@ public class JsonDeserializer<T> {
         this.classType = classType;
     }
 
+    /**
+     * @param data json data
+     * @return deserialized object, depending on the class type
+     */
     public T deserialize(String data) {
 
         try {

@@ -9,11 +9,12 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.fintech_l3.dataloader.DataLoader;
+import com.example.fintech_l3.dataloader.DataLoaderListener;
 import com.example.fintech_l3.dto.CurrencyDTO;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements DataLoader.DataLoaderListener<CurrencyDTO> {
+public class MainActivity extends AppCompatActivity implements DataLoaderListener<CurrencyDTO> {
 
     private  DataLoader<CurrencyDTO> dataLoader;
     private ListView currencyListView;

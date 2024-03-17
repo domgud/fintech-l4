@@ -13,6 +13,11 @@ public class JsonParser<T>{
         this.jsonDeserializer = new JsonDeserializer<>(classType);
     }
 
+    /**
+     * @param jsonString full json tree
+     * @return list of items deserialized using {@link JsonDeserializer}
+     * @throws IOException if failed to read json tree
+     */
     public List<T> parseStringAsList(String jsonString) throws IOException{
         List<T> resultList = new ArrayList<>();
             JsonNode rootNode = JsonObjectMapper.OBJECT_MAPPER.readTree(jsonString);

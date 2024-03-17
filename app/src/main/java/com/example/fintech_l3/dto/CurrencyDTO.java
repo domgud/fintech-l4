@@ -6,11 +6,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+/**
+ * DTO object, other fields provided from the API are not mapped, as they are not needed
+ */
 public class CurrencyDTO {
 
-    @JsonProperty("code")
     private final String code;
-    @JsonProperty("rate")
     private final BigDecimal rate;
 
     @JsonCreator
@@ -18,14 +19,6 @@ public class CurrencyDTO {
         this.code = Objects.requireNonNull(code, "code can not be null!");
         this.rate = Objects.requireNonNull(rate, "rate can not be null!");
 
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public BigDecimal getRate() {
-        return rate;
     }
 
     @Override
