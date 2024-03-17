@@ -30,7 +30,7 @@ public class CurrencyDTO {
 
     @Override
     public String toString(){//overriding the toString() method
-        return code + " " + rate;
+        return code + ": " + rate;
     }
 }
 
